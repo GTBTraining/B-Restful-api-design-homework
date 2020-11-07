@@ -16,6 +16,9 @@ public class StudentRepository {
     public static void delete(Student student) {
         studentList.remove(student);
     }
+    public static List<Student> getAllStudents() {
+        return studentList;
+    }
 
     public static List<Student> findStudentsByGender(String gender) {
         return studentList.stream().filter(student -> student.getGender().equals(gender)).collect(Collectors.toList());
