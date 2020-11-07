@@ -13,11 +13,15 @@ import java.util.List;
 @Service
 public class TeamService {
 
-    public List<Team> formTeam() {
-        return TeamRepository.formTeam();
+    public void formTeam() {
+        TeamRepository.formTeam();
     }
 
     public void changeTeamName(Integer teamId, String teamName) {
         TeamRepository.getTeamById(teamId).setName(teamName);
+    }
+
+    public List<Team> getTeam() {
+        return TeamRepository.getAllTeams();
     }
 }

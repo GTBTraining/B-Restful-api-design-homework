@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 
 public class TeamRepository {
     public static final List<Team> allTeams = new ArrayList<>();
-    public static List<Team> formTeam() {
+
+    public static void formTeam() {
         List<Student> allStudents = StudentRepository.getAllStudents();
         List<Student> tempList = new ArrayList<>();
         tempList.addAll(allStudents);
@@ -32,11 +33,14 @@ public class TeamRepository {
                 allTeams.get(i % 6).setStudentList(TeamMembers);
             }
         }
-        return allTeams;
     }
 
 
     public static Team getTeamById(Integer teamId) {
    return allTeams.stream().filter(team -> team.getId().equals(teamId)).collect(Collectors.toList()).get(0);
+    }
+
+    public static List<Team> getAllTeams() {
+        return allTeams;
     }
 }

@@ -15,13 +15,18 @@ public class TeamController {
         this.teamService=teamService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Team>> formTeams() {
-        return ResponseEntity.ok(teamService.formTeam());
+    @PostMapping
+    public void formTeams() {
+        teamService.formTeam();
     }
 
     @PutMapping
     public void namingTeam(@PathVariable Integer teamId ,@RequestBody String teamName){
       teamService.changeTeamName(teamId,teamName);
+    }
+
+    @GetMapping
+    public List<Team> GetTeam(){
+        return teamService.getTeam();
     }
 }
