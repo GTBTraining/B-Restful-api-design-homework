@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.repository;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.entity.Student;
+import com.thoughtworks.capability.gtb.restfulapidesign.exception.NoSuchStudentException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,12 @@ public class StudentRepository {
         studentList.remove(student);
     }
 
-    public static List<Student> findByGender(String gender) {
+    public static List<Student> findStudentsByGender(String gender) {
         return studentList.stream().filter(student -> student.getGender().equals(gender)).collect(Collectors.toList());
+    }
+
+    public static List<Student> findStudentById(Integer id) {
+        return studentList.stream().filter(student -> student.getId().equals(id)).collect(Collectors.toList());
     }
 }
 

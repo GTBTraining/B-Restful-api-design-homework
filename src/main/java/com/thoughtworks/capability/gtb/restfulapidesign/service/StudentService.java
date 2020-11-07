@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.service;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.entity.Student;
+import com.thoughtworks.capability.gtb.restfulapidesign.exception.NoSuchStudentException;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,13 @@ public class StudentService {
         StudentRepository.delete(student);
     }
 
-    public List<Student> listStudents(String gender) {
-        return StudentRepository.findByGender(gender);
+    public List<Student> listStudentsByGender(String gender) {
+        return StudentRepository.findStudentsByGender(gender);
+    }
+
+    public Student listStudentById(Integer id) throws NoSuchStudentException {
+        if (StudentRepository.findStudentById(id).size()==1)
+    return StudentRepository.findStudentById(id).get(0);
+        throw new NoSuchStudentException();
     }
 }

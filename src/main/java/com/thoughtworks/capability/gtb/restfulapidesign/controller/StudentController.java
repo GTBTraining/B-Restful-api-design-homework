@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.controller;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.entity.Student;
+import com.thoughtworks.capability.gtb.restfulapidesign.exception.NoSuchStudentException;
 import com.thoughtworks.capability.gtb.restfulapidesign.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,11 @@ public class StudentController {
 
     @GetMapping("/List")
     public List<Student> listStudents(@RequestParam String gender){
-        return studentService.listStudents(gender);
+        return studentService.listStudentsByGender(gender);
+    }
+    @GetMapping
+    public Student listStudent(Integer id) throws NoSuchStudentException {
+        return studentService.listStudentById(id);
     }
 
 }
