@@ -4,6 +4,8 @@ import com.thoughtworks.capability.gtb.restfulapidesign.entity.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentService {
 
@@ -13,5 +15,9 @@ public class StudentService {
 
     public void deleteStudent(Student student) {
         StudentRepository.delete(student);
+    }
+
+    public List<Student> listStudents(String gender) {
+        return StudentRepository.findByGender(gender);
     }
 }

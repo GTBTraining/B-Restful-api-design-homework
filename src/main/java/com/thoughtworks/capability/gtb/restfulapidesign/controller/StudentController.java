@@ -4,6 +4,8 @@ import com.thoughtworks.capability.gtb.restfulapidesign.entity.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -20,6 +22,11 @@ public class StudentController {
     @DeleteMapping
     public void deleteStudent(@RequestBody Student student){
         studentService.deleteStudent(student);
+    }
+
+    @GetMapping("/List")
+    public List<Student> listStudents(@RequestParam String gender){
+        return studentService.listStudents(gender);
     }
 
 }
