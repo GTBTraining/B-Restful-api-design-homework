@@ -27,4 +27,10 @@ public class StudentService {
     return StudentRepository.findStudentById(id).get(0);
         throw new NoSuchStudentException();
     }
+
+    public void modifyStudent(Student student) {
+        StudentRepository.findStudentById(student.getId()).get(0).setName(student.getName());
+        StudentRepository.findStudentById(student.getId()).get(0).setGender(student.getGender());
+        StudentRepository.findStudentById(student.getId()).get(0).setNote(student.getNote());
+    }
 }

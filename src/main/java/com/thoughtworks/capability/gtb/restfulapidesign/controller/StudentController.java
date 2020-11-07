@@ -30,8 +30,12 @@ public class StudentController {
         return studentService.listStudentsByGender(gender);
     }
     @GetMapping
-    public Student listStudent(Integer id) throws NoSuchStudentException {
+    public Student listStudent(@RequestParam Integer id) throws NoSuchStudentException {
         return studentService.listStudentById(id);
     }
 
+    @PatchMapping
+    public void modifyStudent(@RequestBody Student student){
+        studentService.modifyStudent(student);
+    }
 }
